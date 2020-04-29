@@ -1,0 +1,29 @@
+<hello name="{{ name }}"></hello>
+<p>
+  
+</p>
+
+<input type="text" value="{{operasi}}">
+<br>
+<br>
+<button (click)=addString(7)>7</button> <button (click)=addString(8)>8</button> <button (click)=addString(9)>9</button>
+<br>
+<button (click)=addString(4)>4</button> <button (click)=addString(5)>5</button> <button (click)=addString(6)>6</button>
+<br>
+<button (click)=addString(1)>1</button> <button (click)=addString(2)>2</button> <button (click)=addString(3)>3</button>
+<br>
+<button (click)=setOperand(0)>-</button>
+<button (click)=setOperand(1)>+</button>
+<button (click)=setOperand(2)>*</button>
+<button (click)=setOperand(3)>/</button>
+
+<br>
+
+<button>0</button> 
+<br>
+<br>
+
+<button (click)=passres()>=</button>
+
+<!-- <button (click)=passres()>Submit</button> -->
+<router-outlet></router-outlet>
