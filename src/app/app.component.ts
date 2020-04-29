@@ -12,12 +12,21 @@ export class AppComponent  {
   constructor(private router : Router) {}
 
   operasi = "";
-  operand = "";
+  operator = 0;
   addString(angka){
     this.operasi += angka;
   }
 
+  sudahAdaOperasi = false;
   setOperand(op){
+    if(this.sudahAdaOperasi){
+      alert("hanya bisa menggunakan 1 operasi saja!")
+      return
+    }
+    else{
+      this.sudahAdaOperasi = true;
+    }
+    this.operator = op;
     if(op ==0){
       this.operasi += "-";
     }
@@ -27,16 +36,32 @@ export class AppComponent  {
     else if(op ==2){
       this.operasi += "*";
     }
-    else if(op ==2){
+    else if(op ==3){
       this.operasi += "/";
     }
   }
 
   operand1 = 0;
   operand2 = 0;
-
+  result = 0;
   passres(){
-    this.router.navigate(['/result',3]);
-      
+
+    let strings = this.operasi.split(/[.*+-/_]/);
+
+    if(this.operator == 0){
+      this.result = Number(strings[0]) - Number(strings[1]);
+    }
+    else if(this.operator == 1){
+      this.result = Number(strings[0]) + Number(strings[1]);
+    }
+    else if(this.operator == 2){
+      this.result = Number(strings[0]) * Number(strings[1]);
+    }
+    else if(this.operator == 3){
+      this.result = Number(strings[0]) / Number(strings[1]);
+    }
+    
+    this.router.navigate(['/result',this.result]);
+
   }
 }
